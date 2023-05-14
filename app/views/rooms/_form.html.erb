@@ -1,0 +1,50 @@
+<%= form_with(model: room, multipart: true) do |form| %>
+    <% if room.errors.any? %>
+        <div id="error_explanation">
+            <h2><%= pluralize(room.errors.count, "Error") %> Prohibited this room from being saved </h2>
+
+            <ul>
+                <% room.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                <% end %>
+            </ul>
+        </div>
+    <% end %>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <%= form.label :largo %>
+                <%= form.text_field :length, class: 'form-control' %>
+            </div>  
+        </div>
+
+        <div class="form-group">
+            <%= form.label :ancho %>
+            <%= form.text_field :width, class: 'form-control' %>
+        </div>
+        
+        <div class="form-group">
+            <label class="btn btn-primary">
+                image <%= form.file_field :image, style: 'display:none' %>
+            </label>
+        <div>
+
+        </div>
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <%= form.label :Description %>
+                <%= form.text_area :description, class: 'form-control', rows: 13 %>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12"> 
+                <div class="d-grid gap-2">
+                    <%= form.submit 'Guardar', class: 'btn btn-primary btn-block' %>
+                </div>    
+            </div>
+        </div>
+    </div>
+<% end %>
